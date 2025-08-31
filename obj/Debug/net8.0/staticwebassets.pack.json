@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\js\\app.js",
+      "PackagePath": "staticwebassets\\js\\app.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.EvaluateurFrameworks.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.EvaluateurFrameworks.props",
+      "PackagePath": "build\\EvaluateurFrameworks.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.EvaluateurFrameworks.props",
+      "PackagePath": "buildMultiTargeting\\EvaluateurFrameworks.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.EvaluateurFrameworks.props",
+      "PackagePath": "buildTransitive\\EvaluateurFrameworks.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "kA+PP61uRXxHy5tQ0d21F/as08/orUKji+bo9YuYyFw=",
+  "Source": "EvaluateurFrameworks",
+  "BasePath": "_content/EvaluateurFrameworks",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "EvaluateurFrameworks\\wwwroot",
+      "Source": "EvaluateurFrameworks",
+      "ContentRoot": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\",
+      "BasePath": "_content/EvaluateurFrameworks",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\css\\styles.css",
+      "SourceId": "EvaluateurFrameworks",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\",
+      "BasePath": "_content/EvaluateurFrameworks",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
+    },
+    {
+      "Identity": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\js\\app.js",
+      "SourceId": "EvaluateurFrameworks",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\wwwroot\\",
+      "BasePath": "_content/EvaluateurFrameworks",
+      "RelativePath": "js/app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\app.js"
+    }
+  ]
+}

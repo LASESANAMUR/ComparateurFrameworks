@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bNNAMsGxjpg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\LAZARE ASSIE\\source\\repos\\EvaluateurFrameworks\\EvaluateurFrameworks.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\LAZARE ASSIE\\.nuget\\packages\\fsharp.core\\8.0.401\\fsharp.core.8.0.401.nupkg.sha512",
+    "C:\\Users\\LAZARE ASSIE\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.21.0\\microsoft.visualstudio.azure.containers.tools.targets.1.21.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluateur de Frameworks</title>
+    <link rel="stylesheet" href="wwwroot/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Évaluateur de Frameworks</h1>
+        
+        <!-- Barre de progression -->
+        <div class="progress-bar">
+            <div class="progress-step">
+                <div class="step-circle active" id="step1">1</div>
+                <span>Critères</span>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle" id="step2">2</div>
+                <span>Frameworks</span>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle" id="step3">3</div>
+                <span>Évaluation</span>
+            </div>
+            <div class="progress-step">
+                <div class="step-circle" id="step4">4</div>
+                <span>Résultats</span>
+            </div>
+        </div>
+
+        <!-- Étape 1: Configuration des critères -->
+        <div id="criteria-setup" class="card fade-in">
+            <h2>📋 Configuration des Critères d'Évaluation</h2>
+            
+            <div class="input-group">
+                <label for="criterion-name">Nom du critère :</label>
+                <input type="text" id="criterion-name" placeholder="Ex: Performance">
+            </div>
+            
+            <div class="input-group">
+                <label for="criterion-weight">Poids du critère (1-10) :</label>
+                <input type="number" id="criterion-weight" min="1" max="10" value="5">
+            </div>
+
+            <div class="input-group">
+                <label for="subcriteria">Sous-critères (séparés par des virgules, optionnel) :</label>
+                <input type="text" id="subcriteria" placeholder="Ex: Vitesse d'exécution, Optimisation mémoire">
+            </div>
+
+            <button class="button" onclick="addCriterion()">➕ Ajouter Critère</button>
+            
+            <div class="criteria-list" id="criteria-list"></div>
+            
+            <button class="button secondary" onclick="proceedToFrameworks()" id="proceed-frameworks" style="display: none;">
+                Configurer les Frameworks ➡️
+            </button>
+        </div>
+
+        <!-- Étape 2: Configuration du nombre de frameworks -->
+        <div id="frameworks-setup" class="card hidden">
+            <h2>🔧 Configuration des Frameworks</h2>
+            
+            <div class="input-group">
+                <label for="frameworks-count">Nombre de frameworks à évaluer :</label>
+                <input type="number" id="frameworks-count" min="2" max="10" value="2">
+            </div>
+            
+            <button class="button" onclick="generateFrameworkForms()">Générer les Formulaires d'Évaluation</button>
+            <button class="button secondary" onclick="goBackToCriteria()">⬅️ Retour aux Critères</button>
+        </div>
+
+        <!-- Étape 3: Évaluation des frameworks -->
+        <div id="evaluation-section" class="card hidden">
+            <h2>⭐ Évaluation des Frameworks</h2>
+            <div id="framework-forms"></div>
+            <button class="button" onclick="calculateResults()" id="compare-button" style="display: none;">
+                🔍 Comparer les Frameworks
+            </button>
+            <button class="button secondary" onclick="goBackToFrameworks()">⬅️ Retour à la Configuration</button>
+        </div>
+
+        <!-- Étape 4: Résultats -->
+        <div id="results-section" class="card hidden">
+            <h2>🏆 Résultats de la Comparaison</h2>
+            <div id="results-content"></div>
+            <button class="button" onclick="restartEvaluation()">🔄 Nouvelle Évaluation</button>
+            <button class="button secondary" onclick="goBackToEvaluation()">⬅️ Modifier les Scores</button>
+        </div>
+    </div>
+
+    <script src="wwwroot/js/app.js"></script>
+</body>
+</html>
