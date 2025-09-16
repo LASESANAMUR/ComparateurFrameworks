@@ -1,9 +1,25 @@
+/**
+ * @fileoverview Évaluateur de Frameworks - Application pour comparer et évaluer des frameworks selon des critères personnalisés
+ * @author Lazare Assie
+ * @version 1.0.0
+ */
+
 // Variables globales
+/** @type {Array<Object>} Liste des critères d'évaluation */
 let criteria = [];
+
+/** @type {Array<Object>} Liste des frameworks à évaluer */
 let frameworks = [];
+
+/** @type {Object} Objet contenant les évaluations des frameworks */
 let evaluations = {};
 
-// Gestion de la barre de progression
+/**
+ * Met à jour la barre de progression visuelle
+ * @param {number} activeStep - Numéro de l'étape active (1-4)
+ * @example
+ * updateProgressBar(2); // Active l'étape 2
+ */
 function updateProgressBar(activeStep) {
     for (let i = 1; i <= 4; i++) {
         const step = document.getElementById(`step${i}`);
@@ -16,7 +32,14 @@ function updateProgressBar(activeStep) {
     }
 }
 
-// Gestion des critères
+/**
+ * Ajoute un nouveau critère d'évaluation à la liste
+ * Récupère les valeurs des champs du formulaire et crée un objet critère
+ * @throws {Error} Alert si le nom du critère est vide
+ * @example
+ * // L'utilisateur remplit les champs et clique sur "Ajouter"
+ * addCriterion();
+ */
 function addCriterion() {
     const name = document.getElementById('criterion-name').value.trim();
     const weight = parseInt(document.getElementById('criterion-weight').value);
@@ -48,6 +71,10 @@ function addCriterion() {
     document.getElementById('proceed-frameworks').style.display = 'inline-block';
 }
 
+/**
+ * Affiche la liste des critères dans l'interface utilisateur
+ * Génère dynamiquement le HTML pour chaque critère avec bouton de suppression
+ */
 function displayCriteria() {
     const list = document.getElementById('criteria-list');
     list.innerHTML = '';
@@ -67,6 +94,12 @@ function displayCriteria() {
     });
 }
 
+/**
+ * Supprime un critère de la liste
+ * @param {number} id - Identifiant unique du critère à supprimer
+ * @example
+ * removeCriterion(1640995200000); // Supprime le critère avec cet ID
+ */
 function removeCriterion(id) {
     criteria = criteria.filter(c => c.id !== id);
     displayCriteria();
@@ -76,7 +109,11 @@ function removeCriterion(id) {
     }
 }
 
-// Navigation entre étapes
+/**
+ * Passe à l'étape de configuration des frameworks
+ * Vérifie qu'au moins un critère a été ajouté avant de continuer
+ * @throws {Error} Alert si aucun critère n'a été défini
+ */
 function proceedToFrameworks() {
     if (criteria.length === 0) {
         alert('Veuillez ajouter au moins un critère');
@@ -88,25 +125,38 @@ function proceedToFrameworks() {
     updateProgressBar(2);
 }
 
+/**
+ * Retourne à l'étape de définition des critères
+ */
 function goBackToCriteria() {
     document.getElementById('frameworks-setup').classList.add('hidden');
     document.getElementById('criteria-setup').classList.remove('hidden');
     updateProgressBar(1);
 }
 
+/**
+ * Retourne à l'étape de configuration des frameworks depuis l'évaluation
+ */
 function goBackToFrameworks() {
     document.getElementById('evaluation-section').classList.add('hidden');
     document.getElementById('frameworks-setup').classList.remove('hidden');
     updateProgressBar(2);
 }
 
+/**
+ * Retourne à l'étape d'évaluation depuis les résultats
+ */
 function goBackToEvaluation() {
     document.getElementById('results-section').classList.add('hidden');
     document.getElementById('evaluation-section').classList.remove('hidden');
     updateProgressBar(3);
 }
 
-// Génération des formulaires
+/**
+ * Génère les formulaires d'évaluation pour chaque framework
+ * Crée la structure de données des frameworks et passe à l'étape d'évaluation
+ * @throws {Error} Alert si moins de 2 frameworks sont spécifiés
+ */
 function generateFrameworkForms() {
     const count = parseInt(document.getElementById('frameworks-count').value);
     
@@ -130,6 +180,10 @@ function generateFrameworkForms() {
     updateProgressBar(3);
 }
 
+/**
+ * Affiche les formulaires d'évaluation pour tous les frameworks
+ * Génère dynamiquement les champs de saisie pour chaque critère et sous-critère
+ */
 function displayFrameworkForms() {
     const container = document.getElementById('framework-forms');
     container.innerHTML = '';
@@ -179,7 +233,13 @@ function displayFrameworkForms() {
     document.getElementById('compare-button').style.display = 'inline-block';
 }
 
-// Gestion des scores
+/**
+ * Met à jour le nom d'un framework
+ * @param {number} id - Identifiant du framework
+ * @param {string} name - Nouveau nom du framework
+ * @example
+ * updateFrameworkName(1, "React"); // Renomme le framework 1 en "React"
+ */
 function updateFrameworkName(id, name) {
     const framework = frameworks.find(f => f.id === id);
     if (framework) {
@@ -187,6 +247,15 @@ function updateFrameworkName(id, name) {
     }
 }
 
+/**
+ * Met à jour le score d'un framework pour un critère donné
+ * @param {number} frameworkId - Identifiant du framework
+ * @param {string} criterionId - Identifiant du critère
+ * @param {string} subcriterion - Nom du sous-critère (ou 'main' si pas de sous-critères)
+ * @param {string|number} score - Score attribué (0-10)
+ * @example
+ * updateScore(1, "123456789", "performance", "8"); // Attribue 8/10 en performance au framework 1
+ */
 function updateScore(frameworkId, criterionId, subcriterion, score) {
     const framework = frameworks.find(f => f.id === frameworkId);
     if (!framework.scores[criterionId]) {
@@ -195,7 +264,12 @@ function updateScore(frameworkId, criterionId, subcriterion, score) {
     framework.scores[criterionId][subcriterion] = parseFloat(score) || 0;
 }
 
-// Calcul des résultats
+/**
+ * Calcule les résultats finaux de l'évaluation
+ * Applique la pondération des critères et trie les frameworks par score décroissant
+ * Affiche ensuite les résultats et passe à l'étape finale
+ * @returns {void}
+ */
 function calculateResults() {
     const results = frameworks.map(framework => {
         let totalScore = 0;
@@ -236,6 +310,15 @@ function calculateResults() {
     updateProgressBar(4);
 }
 
+/**
+ * Affiche les résultats de l'évaluation dans un tableau
+ * Génère un classement avec médailles et détails par critère
+ * @param {Array<Object>} results - Tableau des résultats triés par score décroissant
+ * @param {number} results[].totalScore - Score total pondéré
+ * @param {string} results[].percentage - Pourcentage de réussite
+ * @param {string} results[].name - Nom du framework
+ * @param {Object} results[].scores - Détail des scores par critère
+ */
 function displayResults(results) {
     const container = document.getElementById('results-content');
     
@@ -300,7 +383,10 @@ function displayResults(results) {
     container.innerHTML = html;
 }
 
-// Redémarrage
+/**
+ * Remet à zéro l'application et retourne à la première étape
+ * Vide toutes les données et réinitialise l'interface
+ */
 function restartEvaluation() {
     criteria = [];
     frameworks = [];
@@ -315,7 +401,11 @@ function restartEvaluation() {
     updateProgressBar(1);
 }
 
-// Initialisation
+/**
+ * Initialise l'application au chargement de la page
+ * Configure l'état initial et affiche un message dans la console
+ * @event DOMContentLoaded
+ */
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Évaluateur de Frameworks - Application chargée');
     updateProgressBar(1);
