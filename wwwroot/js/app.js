@@ -410,3 +410,20 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Évaluateur de Frameworks - Application chargée');
     updateProgressBar(1);
 });
+
+/**
+ * Configure le comportement du champ "Poids du critère" après le chargement du DOM.
+ * - Limite la valeur entre 1 et 5.
+ * - Empêche la saisie de caractères non numériques ou invalides.
+ * @event DOMContentLoaded
+ */
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("criterion-weight");
+
+    input.addEventListener("input", () => {
+        let value = parseInt(input.value, 10);
+
+        if (value > 10) input.value = 10;
+        if (value < 1) input.value = 1;
+    });
+});
